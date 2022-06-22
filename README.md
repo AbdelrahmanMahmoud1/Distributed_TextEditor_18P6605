@@ -71,4 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Text-Editor Files Implementation
 
-This multi-user text editor is implemented by JavaScript language through web sockets, socket.io and express libraries. The project contains of multiple clients (nodes) interacting with a server. The server opens a connection and listens for messages upcoming. Message recieved is then broadcasted to all clients except the sender using emit.
+This multi-user text editor is implemented by JavaScript language through web sockets, socket.io and express libraries. The project contains of multiple clients (nodes) interacting with a server. The server opens a connection and listens for messages upcoming. Message recieved is then broadcasted to all clients except the sender using emit. Hence, any text written or change appears is sent as data variable and will be displayed on the other clients' windows.
+File Dependencies as node modules, packages and pnp files are ignored in the .gitignore file
+
