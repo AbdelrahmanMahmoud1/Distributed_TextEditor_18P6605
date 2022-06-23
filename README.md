@@ -69,8 +69,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+## Distributed Computing Project 
+### Team 1 Members
+
+1. Abdelrahman Mahmoud Abdelrahman 18P6605
+2. Ahmad Ossama Ahmad 18P6575
+3. Shehab Mohamed Ibrahim 18P7213
+4. Yusuf Sameh Fawzi 18P1399
+
 ### Text-Editor Files Implementation
 
-This multi-user text editor is implemented by JavaScript language through web sockets, socket.io and express libraries. The project contains of multiple clients (nodes) interacting with a server. The server opens a connection and listens for messages upcoming. Message recieved is then broadcasted to all clients except the sender using emit. Hence, any text written or change appears is sent as data variable and will be displayed on the other clients' windows.
-File Dependencies as node modules, packages and pnp files are ignored in the .gitignore file
+This project describess a multi-user text editor that is implemented by JavaScript language through web sockets, socket.io and express libraries.<br /> The project contains of multiple clients (nodes) interacting with a server that is published on Heroku. There are four main JavaScript files: <br />
+* Server.js
+* App.jsx
+* EditBar.jsx
+* EditorTextArea.jsx 
+
+The first file represents the server and the other three represent the client written as a React app. The server opens a connection and listens for messages upcoming. Message recieved is then broadcasted to all clients except the sender using emit. Hence, any text written or change appears is sent as data variable and will be displayed on the other clients' windows. File Dependencies as node modules, packages and pnp files are ignored in the .gitignore file. index.html file includes the format of the text editor including the important buttons that control the document id, password and the styles used in the text. <br />
+
+Render function is used to get the html file through javaScript code using express library. App.jsx contains sendData function that emits the data to the server. ClearMessage is called when a client undo a specific message. Hence it is cleared to "" and EditorTextArea element is returned to clear the message and exchange it with the new one with specific style used in EditorTextArea.css file.
 
