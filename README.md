@@ -79,13 +79,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Text-Editor Files Implementation
 
-This project describess a multi-user text editor that is implemented by JavaScript language through web sockets, socket.io and express libraries.<br /> The project contains of multiple clients (nodes) interacting with a server that is published on Heroku. There are four main JavaScript files: <br />
+This project describes a multi-user text editor that is implemented by JavaScript language through web sockets, socket.io and express libraries.<br /> The project contains of multiple clients (nodes) interacting with a server that is published on Heroku. There are five main JavaScript files: <br />
 * Server.js
 * App.jsx
 * EditBar.jsx
 * EditorTextArea.jsx 
+* Login.jsx
 
-The first file represents the server and the other three represent the client written as a React app. The server opens a connection and listens for messages upcoming. Message recieved is then broadcasted to all clients except the sender using emit. Hence, any text written or change appears is sent as data variable and will be displayed on the other clients' windows. File Dependencies as node modules, packages and pnp files are ignored in the .gitignore file. index.html file includes the format of the text editor including the important buttons that control the document id, password and the styles used in the text. <br />
+The first file represents the server while the others represent the client side which written as a React app. The server opens a connection and listens for messages upcoming. Message recieved is then broadcasted to all clients except the sender using emit. Hence, any text written or change appears is sent as data variable and will be displayed on the other clients' windows. File Dependencies as node modules, packages and pnp files are ignored in the .gitignore file. index.html file includes the format of the text editor including the important buttons that control the document id, password and the styles used in the text. <br />
 
-Render function is used to get the html file through javaScript code using express library. App.jsx contains sendData function that emits the data to the server. ClearMessage is called when a client undo a specific message. Hence it is cleared to "" and EditorTextArea element is returned to clear the message and exchange it with the new one with specific style used in EditorTextArea.css file.
+Render function is used to get the html file through javaScript code using express library. App.jsx contains sendData function that emits the data to the server. ClearMessage is called when a client undoes a specific message. Hence it is cleared to "" and EditorTextArea element is returned to clear the message and exchange it with the new one with specific style used in EditorTextArea.css file.<br />
+Login file is used to specify styles of the login button using react bootstraping where this button is clicked when client needs to join a shared document and starts writing after entering correct id to open connection with the server and get access to the document.
 
