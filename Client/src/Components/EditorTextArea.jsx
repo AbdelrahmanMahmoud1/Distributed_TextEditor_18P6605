@@ -9,7 +9,9 @@ import EditBar from "./EditBar";
 
 function EditorTextArea(props){
 
-const [text, setText] = useState();
+const [text, setText] = useState("");
+
+var isRecieved = props.isRecieved
 
 const style = {
  
@@ -18,21 +20,19 @@ const style = {
 
 function handleChange(event){
     const x = event.target.value;
-    props.changeText(x)
-    setText(x)
+    props.changeText(x);
+    setText(x);
+   
 }
 
 useEffect(()=>{
    
-    console.log("this is recieved "+props.recievedText);
-    if (props.recievedText){
-        setText(props.recievedText);
-        props.clearReceivedMessege();
+    if(props.recievedText != text){
+        console.log("this is recieved "+props.recievedText);
+        console.log("this is text "+text);
+        setText(props.recievedText)
     }
-   
-
-
-   
+ 
 })
     return <div>
  
