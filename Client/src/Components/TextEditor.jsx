@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef,useEffect, createRef } from "react";
 import ReactDOM from "react-dom";
 import ContentEditable from "react-contenteditable";
 import sanitizeHtml from "sanitize-html";
@@ -10,16 +10,25 @@ class MyComponent extends React.Component {
   constructor(props) {
    
     super();
-   
+    const text = createRef('');
     this.state = {
       html: ``,
       editable: true
     };
   }
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.text !== this.props.text){
+      this.text = this.props.text 
+    }
+  
+  }
  
-
   handleChange = evt => {
-    this.setState({ html: evt.target.value });
+    this.text = evt.target.value
+    console.log( this.text);
+    // this.setState({ html: evt.target.value });
+    // this.setState({ text: sanitizeHtml(evt.target.value, this.sanitizeConf) });
+    this.props.handleTextChange( this.text)
 
   };
 
@@ -29,13 +38,15 @@ class MyComponent extends React.Component {
   };
 
   sanitize = () => {
-    this.setState({ html: sanitizeHtml(this.state.html, this.sanitizeConf) });
-    this.props.handleTextChange(this.state.html)
+   console.log( this.text);
+    // this.setState({ html: sanitizeHtml(this.state.html, this.sanitizeConf) });
+    // this.props.handleTextChange(this.state.html)
   };
 
   toggleEditable = () => {
     this.setState({ editable: !this.state.editable });
   };
+
   
 
   render = () => {
@@ -46,10 +57,10 @@ class MyComponent extends React.Component {
         <ContentEditable
           className="editable"
           tagName="pre"
-          html={this.state.html} // innerHTML of the editable div
+          html={ this.text} // innerHTML of the editable div
           disabled={!this.state.editable} // use true to disable edition
           onChange={this.handleChange} // handle innerHTML change
-          onBlur={this.sanitize}
+        
         />
        
         <h3>actions</h3>
@@ -64,6 +75,7 @@ class MyComponent extends React.Component {
         <button onClick={this.toggleEditable}>
           Make {this.state.editable ? "readonly" : "editable"}
         </button>
+        <h1>{this.props.text}</h1>
       </div>
     );
   };

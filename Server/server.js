@@ -55,7 +55,10 @@ class createContent {
 
 
 const server = http.createServer(app);
-const PORT = process.env.PORT || 3001;
+let port = process.env.PORT;
+if (port == null || port == ""){
+  port= 3001;
+}
 
 const io = new Server(server,{
     cors: {
@@ -177,6 +180,6 @@ function updateRecord(room,content){
   })
 }
 
-server.listen(3001, () => {
+server.listen(port, () => {
   console.log('listening on *:3001');
 });

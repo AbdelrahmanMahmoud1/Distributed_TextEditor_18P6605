@@ -7,6 +7,8 @@ import "../Style/styles.css"
 const socket = io.connect("http://192.168.1.6:3001")
 
 function App(){
+    const [value, setValue] = useState(true);
+
 
     const style = {
         display: "inline",
@@ -39,7 +41,7 @@ function sendData(Data){
     }
    
         setData(Data)
-        console.log("Data before sending: " + dataToServer.room);
+        console.log("Data before sending: " + dataToServer.content);
         socket.emit("sendData", dataToServer)
     
     
@@ -47,7 +49,7 @@ function sendData(Data){
 }
 
     useEffect(()=>{
-   
+        console.log("recieved data: ");
         socket.on("recieve_message",(data)=>{
             console.log("recieved data: "+data);
 
@@ -56,7 +58,7 @@ function sendData(Data){
       
         })
         
-     },[socket])
+     },[value])
 
 function clearMessege(){
     setData("");
@@ -66,11 +68,16 @@ const joinRoom = () => {
     if (userName !== "" && room !== ""){
         socket.emit("join_room",room);
     }
+    setValue(!value)
 }
 
 const createNewDoc = () => {
     if (userName !== "" && room !== ""){
-        socket.emit("create_room",room);
+        var doc = {
+            name:userName,
+            room:room
+        }
+        socket.emit("create_room",doc);
     }
 }
 
@@ -114,9 +121,9 @@ socket.on('update', function (content) {
                 setRoom(event.target.value)
             }}></input></li>         </ul>
         <ul style = {navStyle}>
-            <li style = {style}> <Button disabled={!enable} style = {buttonStyle} variant="primary" onClick={joinRoom}>Login</Button></li>
+        {!isEdit && <li style = {style}> <Button disabled={!enable} style = {buttonStyle} variant="primary" onClick={joinRoom}>Login</Button></li>}
          
-            <li onClick={createNewDoc}style = {style}> <Button disabled={!enable} style = {buttonStyle} variant="primary">Create New Document</Button></li>
+            {!isEdit && <li onClick={createNewDoc}style = {style}> <Button style = {buttonStyle} variant="primary">Create New Document</Button></li>}
             {isFoundDoc &&<li style = {style}><p style = {style}>Document not Found</p></li>}
             {isexistDoc &&<li style = {style}><p style = {style}>Document alreay exists</p></li>}
             {isEdit &&   <li style = {style}> <Button style = {buttonStyle} variant="primary" onClick={()=>{window.location.reload();  setEnable(false)}}>Logout</Button></li>
@@ -126,10 +133,8 @@ socket.on('update', function (content) {
 
          {isEdit && <p style = {navStyle}>You are editing Document: {isEdit} </p>}
        
-    <EditorTextArea socket={socket} 
-    username = {userName}
-    room = {room}
-    clearReceivedMessege={clearMessege}
+    <EditorTextArea 
+    socket = {socket}
     enable = {enable}
     recievedText={recievedData} 
     changeText = {sendData}>
