@@ -39,35 +39,6 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 ## Distributed Computing Project 
 ### Team 1 Members
@@ -87,4 +58,7 @@ This project describes a multi-user text editor that is implemented by JavaScrip
 * Login.jsx
 
 ### User Guide
-The user shall enter the text editor through Heroku app link. The user shall write his name and id of the document he wants to connect before start editing then clicks login button if the id is available. He shall clicks create new document button if he wants to connect to a blank page. The system will generates a message saying "You are now editing document (id)". Then the user shall write and edit as much as he can, as well as, create new document and login buttons become unclickable. Once the user needs to disconnect from the document, he shall click Logout button
+The user shall enter the text editor through Heroku app link. The user shall write his name and id of the document he wants to connect before start editing then clicks login button if the id is available. He shall clicks create new document button if he wants to connect to a blank page. The system will generates a message saying "You are now editing document (id)". Then the user shall write and edit as much as he can, as well as, create new document and login buttons become unclickable. Once the user needs to disconnect from the document, he shall click Logout button.
+
+### Demo Video for testing the application
+https://drive.google.com/drive/folders/1NFKtVKAQTAVFMNvDDys7vR6lnUImqLKc 
