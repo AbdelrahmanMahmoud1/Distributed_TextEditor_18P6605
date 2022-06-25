@@ -39,23 +39,17 @@ function sendData(Data){
         author: userName,
         content: Data
     }
-   
         setData(Data)
         console.log("Data before sending: " + dataToServer.content);
         socket.emit("sendData", dataToServer)
-    
-    
-    
+        
 }
 
     useEffect(()=>{
         console.log("recieved data: ");
         socket.on("recieve_message",(data)=>{
-            console.log("recieved data: "+data);
-
+            console.log("recieved data: "+ data);
             setData(recievedData + data)
-            
-      
         })
         
      },[value])
@@ -85,13 +79,12 @@ const createNewDoc = () => {
 socket.on('update', function (content) {
     if(content === 1){
         setDocState(true)
-        setexistState(false)
-     
-    }else if (content === 2){
+        setexistState(false)     
+    }
+    
+    else if (content === 2){
         setexistState(true)
         setDocState(false)
-        console.log("3aaaaaaaaaaaaaaaaaaaaaaa");
-
     }
 
     else if (content === 3){
