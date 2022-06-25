@@ -62,7 +62,7 @@ if (port == null || port == ""){
 
 const io = new Server(server,{
     cors: {
-        origin: "https://http://localhost:3000",
+        origin: "https://distributed-texteditor-18p6605.herokuapp.com/",
         methods: ["GET","POST"] 
     }
 });
