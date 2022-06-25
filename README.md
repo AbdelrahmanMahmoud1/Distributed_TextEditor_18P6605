@@ -86,8 +86,5 @@ This project describes a multi-user text editor that is implemented by JavaScrip
 * EditorTextArea.jsx 
 * Login.jsx
 
-The first file represents the server while the others represent the client side which written as a React app. The server opens a connection and listens for messages upcoming. Message recieved is then broadcasted to all clients except the sender using emit. Hence, any text written or change appears is sent as data variable and will be displayed on the other clients' windows. File Dependencies as node modules, packages and pnp files are ignored in the .gitignore file. index.html file includes the format of the text editor including the important buttons that control the document id, password and the styles used in the text. <br />
-
-Render function is used to get the html file through javaScript code using express library. App.jsx contains sendData function that emits the data to the server. ClearMessage is called when a client undoes a specific message. Hence it is cleared to "" and EditorTextArea element is returned to clear the message and exchange it with the new one with specific style used in EditorTextArea.css file.<br />
-Login file is used to specify styles of the login button using react bootstraping where this button is clicked when client needs to join a shared document and starts writing after entering correct id to open connection with the server and get access to the document.
-
+### User Guide
+The user shall enter the text editor through Heroku app link. The user shall write his name and id of the document he wants to connect before start editing then clicks login button if the id is available. He shall clicks create new document button if he wants to connect to a blank page. The system will generates a message saying "You are now editing document (id)". Then the user shall write and edit as much as he can, as well as, create new document and login buttons become unclickable. Once the user needs to disconnect from the document, he shall click Logout button
