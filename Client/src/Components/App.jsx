@@ -113,6 +113,7 @@ socket.on('update', function (content) {
 });
 
     return <div>
+        <button>adadadadadad</button>
        <ul style = {navStyle}>
             <li style = {style}><input type="text" placeholder="Enter your name" onChange={(event) =>{
                 setUserName(event.target.value)
