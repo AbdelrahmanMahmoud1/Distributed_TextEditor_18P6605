@@ -5,6 +5,35 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const path = require('path');
 const publicPath = path.join(__dirname, '..', 'Client/public');
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/TextEditorDB');
+var contentA = [];
+const TextEditorSchema = new mongoose.Schema({
+  room:String,
+  author:String,
+  content:String
+})
+
+const TextEdit = mongoose.model("TextEditor",TextEditorSchema);
+
+const content1 = new TextEdit({
+  room:"1000",
+  author:"abdelrahman 7oda",
+  content:"i am content from database 2222222222222222"
+})
+
+// content1.save();
+
+TextEdit.find(function(err,contentFromDB){
+  if(err){
+    console.log(err);
+  }else{
+console.log(contentFromDB[2].room);
+contentA = contentFromDB;
+  }
+})
+
 app.use(cors());
 app.use(express.static(publicPath));
 
@@ -13,7 +42,6 @@ app.get('/', (req, res) => {
 });
 
 
-var content = "";
 
 class createContent {
   constructor(room, content, author) {
@@ -24,7 +52,8 @@ class createContent {
 }
 
 
-var contentA = [];
+
+
 
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3001;
