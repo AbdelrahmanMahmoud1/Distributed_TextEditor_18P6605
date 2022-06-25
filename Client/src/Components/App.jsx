@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 import Button from 'react-bootstrap/Button';
 import MyComponent from "./TextEditor";
 import "../Style/styles.css"
-const socket = io.connect("https://distributed-text-editior.herokuapp.com")
+const socket = io.connect("http://localhost:3001")
 
 function App(){
     const [value, setValue] = useState(true);
@@ -113,7 +113,7 @@ socket.on('update', function (content) {
 });
 
     return <div>
-        <button>adadadadadad</button>
+        
        <ul style = {navStyle}>
             <li style = {style}><input type="text" placeholder="Enter your name" onChange={(event) =>{
                 setUserName(event.target.value)

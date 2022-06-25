@@ -4,7 +4,7 @@ const http = require('http');
 const cors = require("cors");
 const { Server } = require("socket.io");
 const path = require('path');
-const publicPath = path.join(__dirname, '..', 'Client/public');
+const publicPath = path.join(__dirname+'/public');
 
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb+srv://AbdelrahmanMahmoud:r9vB-gi6dvbVfSb@cluster0.plids.mongodb.net/?retryWrites=true&w=majorityTextEditorDB');
@@ -62,7 +62,7 @@ if (port == null || port == ""){
 
 const io = new Server(server,{
     cors: {
-        origin: "https://distributed-text-editior.herokuapp.com",
+        origin: "https://http://localhost:3000",
         methods: ["GET","POST"] 
     }
 });
