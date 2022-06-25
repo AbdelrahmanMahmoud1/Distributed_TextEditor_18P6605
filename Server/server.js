@@ -7,8 +7,10 @@ const path = require('path');
 const publicPath = path.join(__dirname, '..', 'Client/public');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/TextEditorDB');
+// mongoose.connect('mongodb+srv://AbdelrahmanMahmoud:r9vB-gi6dvbVfSb@cluster0.plids.mongodb.net/?retryWrites=true&w=majorityTextEditorDB');
+mongoose.connect("mongodb+srv://AbdelrahmanMahmoud:r9vB-gi6dvbVfSb@cluster0.plids.mongodb.net/TextEditorDB");
 var contentA = [];
+var users = []
 const TextEditorSchema = new mongoose.Schema({
   room:String,
   author:String,
@@ -17,11 +19,8 @@ const TextEditorSchema = new mongoose.Schema({
 
 const TextEdit = mongoose.model("TextEditor",TextEditorSchema);
 
-const content1 = new TextEdit({
-  room:"1000",
-  author:"abdelrahman 7oda",
-  content:"i am content from database 2222222222222222"
-})
+
+
 
 // content1.save();
 
@@ -29,7 +28,7 @@ TextEdit.find(function(err,contentFromDB){
   if(err){
     console.log(err);
   }else{
-console.log(contentFromDB[2].room);
+console.log(contentFromDB[0].room);
 contentA = contentFromDB;
   }
 })
@@ -106,7 +105,7 @@ io.on('connection', (socket) => {
     console.log("length: "+ contentA.length);
     while(isFound && (i < contentA.length)){
       console.log("i am inside");
-      if(contentA[i].room === data){
+      if(contentA[i].room === data.room){
         isFound = false;
         create = false;
        
@@ -114,15 +113,16 @@ io.on('connection', (socket) => {
       i++;
     }
 
+
     i = 0;
     if(create){
-      socket.join(data);
-      console.log("user with ID:"+ socket.id + "joined room: "+ data);
+      socket.join(data.room);
+      console.log("user with ID:"+ data.name + "joined room: "+ data.room);
       console.log("content in join room: "+contentA);
-      contentA.push(new createContent(data,"",socket.id))
+      contentA.push(new createContent(data.room,"",data.name))
       console.log(contentA);
       console.log("New doc created");
- 
+      createRecord(data.room,data.name)
       socket.emit("update","");
     }else{
       socket.emit("update",2);
@@ -141,7 +141,11 @@ io.on('connection', (socket) => {
   socket.on("sendData", (Data) => {
     
     console.log("data in server",Data);
-    contentA.forEach((item) =>{ if(item.room === Data.room){ item.content = Data.content;socket.to(item.room).emit("recieve_message",item.content); console.log("this is content in server: "+item.content);}})
+    contentA.forEach((item) =>{ if(item.room === Data.room){
+       item.content = Data.content;
+       updateRecord(Data.room,Data.content)
+       socket.to(item.room).emit("recieve_message",item.content); 
+       console.log("this is content in server: "+item.content);}})
  
    
    
@@ -152,6 +156,26 @@ io.on('connection', (socket) => {
     console.log("User Disconnected"),socket.id;
   })
 });
+
+function createRecord(room,author){
+  var x = new TextEdit({
+    room:room,
+    author:author,
+    content:""
+  })
+  x.save();
+  console.log("updated successfully");
+}
+
+function updateRecord(room,content){
+  TextEdit.findOneAndUpdate({room:room}, {content:content}, (err)=>{
+    if (err){
+      console.log(err);
+    }else{
+      console.log("updated successfully");
+    }
+  })
+}
 
 server.listen(3001, () => {
   console.log('listening on *:3001');
