@@ -62,7 +62,7 @@ if (port == null || port == ""){
 
 const io = new Server(server,{
     cors: {
-        origin: "http://192.168.1.6:3000",
+        origin: "https://distributed-text-editior.herokuapp.com",
         methods: ["GET","POST"] 
     }
 });

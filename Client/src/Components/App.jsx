@@ -4,7 +4,7 @@ import io from 'socket.io-client'
 import Button from 'react-bootstrap/Button';
 import MyComponent from "./TextEditor";
 import "../Style/styles.css"
-const socket = io.connect("http://192.168.1.6:3001")
+const socket = io.connect("https://distributed-text-editior.herokuapp.com")
 
 function App(){
     const [value, setValue] = useState(true);
