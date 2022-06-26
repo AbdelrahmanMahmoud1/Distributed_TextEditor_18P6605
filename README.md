@@ -62,7 +62,8 @@ This link is the project's text editor application that is produced by Heroku do
 http://distributed-texteditor-18p.herokuapp.com/
 
 ### User Guide
-The user shall enter the text editor through Heroku app link. The user shall write his name and id of the document he wants to connect before start editing then clicks login button if the id is available. He shall clicks create new document button if he wants to connect to a blank page. The system will generates a message saying "You are now editing document (id)". Then the user shall write and edit as much as he can, as well as, create new document and login buttons become unclickable. Once the user needs to disconnect from the document, he shall click Logout button.
+The user shall enter the text editor through Heroku app link. The user shall write his name and id of the document he wants to connect before start editing then clicks login button if the id is available. He shall clicks create new document button if he wants to connect to a blank page. The system will generates a message saying "You are now editing document (id)". Then the user shall write and edit as much as he can, as well as, create new document and login buttons become unclickable.
+If the user enters an available id and press create new document he won't be connected and the program prompt a message "Document already exist". Hence, the user needs to reenter a new id. If the user enters an unavailable id in the documents saved and pressed login button the program prompts message "Document not found", so the user could reenter a valid id to be connected to his required document. Once the user needs to disconnect from the document, he shall click Logout button.
 
 ### Demo Video for testing the application
 https://drive.google.com/drive/folders/1NFKtVKAQTAVFMNvDDys7vR6lnUImqLKc 
