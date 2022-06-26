@@ -57,6 +57,10 @@ This project describes a multi-user text editor that is implemented by JavaScrip
 * EditorTextArea.jsx 
 * Login.jsx
 
+### Heroku Link
+This link is the project's text editor application that is produced by Heroku domains that allow users to access documents from multiple devices to achieve distributed computing:
+http://distributed-texteditor-18p.herokuapp.com/
+
 ### User Guide
 The user shall enter the text editor through Heroku app link. The user shall write his name and id of the document he wants to connect before start editing then clicks login button if the id is available. He shall clicks create new document button if he wants to connect to a blank page. The system will generates a message saying "You are now editing document (id)". Then the user shall write and edit as much as he can, as well as, create new document and login buttons become unclickable. Once the user needs to disconnect from the document, he shall click Logout button.
 
